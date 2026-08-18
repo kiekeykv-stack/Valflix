@@ -1,6 +1,6 @@
 /* =========================================================
-   STREAMFLIX — styles.css
-   Tema oscuro inspirado en Netflix
+   VALFLIX — styles.css
+   Tema oscuro inspirado en Netflix, optimizado para móvil
    ========================================================= */
 
 :root {
@@ -14,15 +14,18 @@
   --card-radius: 4px;
   --transition-fast: 0.2s ease;
   --transition-medium: 0.35s ease;
-  --header-height: 68px;
+  --header-height: 60px;
   --font-display: "Bebas Neue", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  /* Ancho de tarjeta fluido: nunca más chico que 120px ni más grande que 230px */
+  --card-width: clamp(112px, 28vw, 230px);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -35,6 +38,8 @@ body {
   font-family: var(--font-body);
   min-height: 100vh;
   overflow-x: hidden;
+  /* Evita que el bounce/scroll del body compita con el de los modales en iOS */
+  overscroll-behavior-y: none;
 }
 
 img {
@@ -55,7 +60,8 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
+  height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -73,14 +79,16 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   padding: 0 4%;
 }
 
 .logo {
   font-family: var(--font-display);
   letter-spacing: 1px;
-  font-size: 1.8rem;
+  font-size: clamp(1.3rem, 4.5vw, 1.8rem);
   color: var(--red-accent);
+  flex-shrink: 0;
 }
 
 .logo span {
@@ -90,27 +98,49 @@ button {
 .nav {
   display: flex;
   align-items: center;
+  min-width: 0; /* permite que el input se encoja dentro del flex */
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 220px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  width: 16px;
+  height: 16px;
+  fill: var(--text-muted);
+  pointer-events: none;
 }
 
 .search-input {
   background-color: rgba(0, 0, 0, 0.75);
   border: 1px solid var(--text-muted);
   color: var(--text-primary);
-  padding: 8px 14px;
+  padding: 8px 12px 8px 32px;
   border-radius: 3px;
-  font-size: 0.9rem;
-  width: 220px;
-  transition: width var(--transition-fast), border-color var(--transition-fast);
+  /* 16px mínimo evita que iOS haga zoom automático al enfocar el input */
+  font-size: 16px;
+  width: 100%;
+  min-width: 0;
+  transition: border-color var(--transition-fast);
 }
 
 .search-input:focus {
   outline: none;
   border-color: var(--text-primary);
-  width: 280px;
 }
 
 .search-input::placeholder {
   color: var(--text-muted);
+  font-size: 0.85rem;
 }
 
 /* =========================================================
@@ -118,12 +148,13 @@ button {
    ========================================================= */
 .hero {
   position: relative;
-  height: 56vh;
-  min-height: 340px;
+  height: 50vh;
+  min-height: 260px;
+  max-height: 520px;
   display: flex;
   align-items: flex-end;
   background: linear-gradient(135deg, #3a0a0a 0%, #141414 70%);
-  padding: 0 4% 40px;
+  padding: 0 4% clamp(24px, 6vw, 40px);
   overflow: hidden;
 }
 
@@ -146,35 +177,41 @@ button {
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(2rem, 8vw, 4rem);
   letter-spacing: 1px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.05;
 }
 
 .hero__desc {
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: clamp(0.85rem, 2.6vw, 1.05rem);
   line-height: 1.5;
   max-width: 520px;
+  /* Recorta descripciones largas en pantallas chicas para no empujar el catálogo */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* =========================================================
    CATÁLOGO / FILAS DE TARJETAS
    ========================================================= */
 .catalog {
-  padding: 40px 0 60px;
+  padding: clamp(24px, 5vw, 40px) 0 60px;
   position: relative;
   z-index: 2;
-  margin-top: -80px;
+  margin-top: clamp(-50px, -8vw, -80px);
 }
 
 .row {
-  margin-bottom: 40px;
+  margin-bottom: clamp(24px, 5vw, 40px);
 }
 
 .row__title {
-  font-size: 1.3rem;
+  font-size: clamp(1.05rem, 3.2vw, 1.3rem);
   font-weight: 500;
   margin: 0 4% 12px;
   color: var(--text-primary);
@@ -185,7 +222,10 @@ button {
   gap: 8px;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 10px 4% 30px;
+  padding: 10px 4% 24px;
+  /* Scroll con "imán" por tarjeta, como los carruseles nativos de apps móviles */
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--text-muted) transparent;
 }
@@ -205,12 +245,13 @@ button {
 .card {
   position: relative;
   flex: 0 0 auto;
-  width: 230px;
+  width: var(--card-width);
   aspect-ratio: 2 / 3;
   border-radius: var(--card-radius);
   overflow: hidden;
   cursor: pointer;
   background-color: var(--bg-color-elevated);
+  scroll-snap-align: start;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), z-index 0s;
   transform-origin: center center;
 }
@@ -220,6 +261,7 @@ button {
   height: 100%;
   object-fit: cover;
   transition: opacity var(--transition-fast);
+  background-color: var(--bg-color-elevated);
 }
 
 .card__info {
@@ -227,7 +269,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 14px 12px;
+  padding: 12px 10px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.1) 100%);
   opacity: 0;
   transform: translateY(8px);
@@ -235,28 +277,49 @@ button {
 }
 
 .card__info h4 {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 700;
   margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card__info span {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-secondary);
 }
 
-.card:hover,
-.card:focus-visible {
-  transform: scale(1.12);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-  z-index: 10;
-  outline: none;
+/* Hover solo en dispositivos que realmente tienen puntero (evita "hover pegado" en táctiles) */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: scale(1.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+  }
+
+  .card:hover .card__info {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.card:hover .card__info,
-.card:focus-visible .card__info {
-  opacity: 1;
-  transform: translateY(0);
+/* En pantallas táctiles, la info del título siempre visible (no depende de hover) */
+@media (hover: none), (pointer: coarse) {
+  .card__info {
+    opacity: 1;
+    transform: translateY(0);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+}
+
+.card:active {
+  transform: scale(0.97);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--red-accent);
+  outline-offset: 2px;
 }
 
 /* =========================================================
@@ -291,18 +354,24 @@ button {
   transition: transform var(--transition-medium);
   max-height: 90vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal-overlay.active .modal {
   transform: translateY(0) scale(1);
 }
 
+/* Barrita decorativa tipo "hoja inferior" — solo visible en móvil */
+.modal__drag-handle {
+  display: none;
+}
+
 .modal__close {
   position: absolute;
-  top: 14px;
+  top: max(14px, env(safe-area-inset-top, 0px));
   right: 14px;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
   background-color: rgba(20, 20, 20, 0.8);
@@ -341,12 +410,12 @@ button {
 }
 
 .series-modal__body {
-  padding: 8px 40px 40px;
+  padding: 8px clamp(20px, 5vw, 40px) 40px;
 }
 
 .series-modal__title {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 5vw, 2rem);
   letter-spacing: 0.5px;
   margin-bottom: 14px;
 }
@@ -356,10 +425,11 @@ button {
   line-height: 1.6;
   margin-bottom: 28px;
   max-width: 640px;
+  font-size: 0.95rem;
 }
 
 .episodes-heading {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   margin-bottom: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -376,22 +446,28 @@ button {
 .episode-item {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   padding: 12px 14px;
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.03);
   transition: background-color var(--transition-fast);
 }
 
-.episode-item:hover {
+.episode-item:active {
   background-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .episode-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .episode-item__number {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
-  width: 34px;
+  width: 30px;
   text-align: center;
   flex-shrink: 0;
 }
@@ -402,7 +478,7 @@ button {
 }
 
 .episode-item__info h5 {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 2px;
   white-space: nowrap;
@@ -416,16 +492,25 @@ button {
   color: #000;
   border: none;
   border-radius: 4px;
-  padding: 8px 18px;
+  padding: 10px 16px;
   font-size: 0.85rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 6px;
+  /* Tap target cómodo para dedos (mín. recomendado 44px de alto) */
+  min-height: 40px;
   transition: background-color var(--transition-fast);
 }
 
-.episode-item__play:hover {
+@media (hover: hover) and (pointer: fine) {
+  .episode-item__play:hover {
+    background-color: var(--red-accent);
+    color: var(--text-primary);
+  }
+}
+
+.episode-item__play:active {
   background-color: var(--red-accent);
   color: var(--text-primary);
 }
@@ -437,7 +522,7 @@ button {
 }
 
 .player-modal__title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   margin: 4px 44px 16px 6px;
 }
@@ -461,12 +546,37 @@ button {
   border: none;
 }
 
+/* Spinner de carga mientras el iframe de Drive establece conexión */
+.player-modal__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--red-accent);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  pointer-events: none;
+}
+
+.player-modal__spinner.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* =========================================================
    FOOTER
    ========================================================= */
 .footer {
   text-align: center;
-  padding: 30px 4% 50px;
+  padding: 30px 4% calc(50px + env(safe-area-inset-bottom, 0px));
   color: var(--text-muted);
   font-size: 0.8rem;
 }
@@ -482,39 +592,72 @@ button {
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE — MÓVIL (≤720px)
+   Los modales pasan a pantalla completa tipo "hoja inferior"
    ========================================================= */
 @media (max-width: 720px) {
-  .search-input,
-  .search-input:focus {
-    width: 150px;
+  :root {
+    --header-height: 54px;
   }
 
-  .hero {
-    height: 46vh;
-    padding-bottom: 24px;
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end; /* el modal sube desde abajo, como una hoja */
   }
 
-  .card {
-    width: 150px;
+  .modal {
+    max-height: 94vh;
+    max-height: 94dvh;
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+  }
+
+  .modal__drag-handle {
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.25);
+    margin: 10px auto 0;
+  }
+
+  .series-modal__banner {
+    aspect-ratio: 16 / 9;
   }
 
   .series-modal__body {
-    padding: 8px 20px 30px;
+    padding: 8px 18px 30px;
   }
 
   .episode-item {
-    flex-wrap: wrap;
+    padding: 10px 12px;
   }
 
-  .episode-item__play {
-    margin-left: 50px;
+  .player-modal {
+    padding: 14px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .player-modal__title {
+    margin-right: 40px;
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .card__info h4 {
+    font-size: 0.78rem;
+  }
+
+  .episode-item__play span {
+    display: none; /* en pantallas muy chicas solo se ve el ícono ▶ */
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
+    animation: none !important;
     scroll-behavior: auto !important;
   }
 }

@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StreamFlix — Mi Biblioteca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#141414" />
+  <title>Valflix — Mi Biblioteca</title>
 
   <!-- Tipografía estilo Netflix (Bebas Neue para títulos + Roboto para texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,15 +21,21 @@
   <!-- ============== HEADER ============== -->
   <header class="header" id="header">
     <div class="header__inner">
-      <h1 class="logo">STREAM<span>FLIX</span></h1>
+      <h1 class="logo">VAL<span>FLIX</span></h1>
       <nav class="nav">
-        <input
-          type="search"
-          id="searchInput"
-          class="search-input"
-          placeholder="Buscar series..."
-          autocomplete="off"
-        />
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/>
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Buscar series..."
+            autocomplete="off"
+            enterkeyhint="search"
+          />
+        </div>
       </nav>
     </div>
   </header>
@@ -52,7 +59,8 @@
 
   <!-- ============== MODAL: DETALLE DE SERIE + LISTA DE EPISODIOS ============== -->
   <div class="modal-overlay" id="seriesModalOverlay">
-    <div class="modal series-modal">
+    <div class="modal series-modal" role="dialog" aria-modal="true" aria-labelledby="seriesModalTitle">
+      <div class="modal__drag-handle" aria-hidden="true"></div>
       <button class="modal__close" id="closeSeriesModal" aria-label="Cerrar">&times;</button>
 
       <div class="series-modal__banner" id="seriesModalBanner">
@@ -73,12 +81,14 @@
 
   <!-- ============== MODAL: REPRODUCTOR DE VIDEO ============== -->
   <div class="modal-overlay" id="playerModalOverlay">
-    <div class="modal player-modal">
+    <div class="modal player-modal" role="dialog" aria-modal="true" aria-labelledby="playerModalTitle">
+      <div class="modal__drag-handle" aria-hidden="true"></div>
       <button class="modal__close" id="closePlayerModal" aria-label="Cerrar">&times;</button>
       <h3 class="player-modal__title" id="playerModalTitle"></h3>
 
       <!-- Contenedor responsivo 16:9 para el iframe de Google Drive -->
       <div class="player-modal__frame-wrapper">
+        <div class="player-modal__spinner" id="playerSpinner" aria-hidden="true"></div>
         <iframe
           id="videoFrame"
           class="player-modal__iframe"
@@ -92,7 +102,7 @@
   </div>
 
   <footer class="footer">
-    <p>StreamFlix — Proyecto personal alojado en GitHub Pages. No afiliado a Netflix.</p>
+    <p>Valflix — Proyecto personal alojado en GitHub Pages. No afiliado a Netflix.</p>
   </footer>
 
   <script src="script.js"></script>
