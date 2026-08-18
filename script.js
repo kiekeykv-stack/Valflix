@@ -1,28 +1,21 @@
 /* =========================================================
    STREAMFLIX — script.js
-   =========================================================
-   ¿CÓMO AGREGAR TUS PROPIAS SERIES?
-   Edita únicamente el arreglo SERIES_DATA de abajo.
-   No es necesario tocar el resto del archivo.
    ========================================================= */
 
-/**
- * SERIES_DATA
- */
 const SERIES_DATA = [
   {
-    id: "mi-serie-principal",
-    title: "Mi Serie Principal",
+    id: "rukie",
+    title: "Rukie",
     shortDescription:
-      "Serie cargada desde Google Drive con todos sus episodios disponibles para reproducir directamente en la plataforma.",
-    // 👉 POSTER: imagen vertical (recomendado 500x750px aprox.)
-    posterURL: "https://placehold.co/500x750/1f1f1f/e50914?text=Mi+Serie",
-    // 👉 BANNER: imagen horizontal para el modal (recomendado 1280x560px aprox.)
-    bannerURL: "https://placehold.co/1280x560/1f1f1f/e50914?text=Mi+Serie",
+      "Empezar de nuevo no es fácil, especialmente para John Nolan, quien tras un incidente decide perseguir su sueño de ser policía en Los Ángeles.",
+    // 👉 POSTER OFICIAL
+    posterURL: "https://media.themoviedb.org/t/p/w500/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
+    // 👉 BANNER
+    bannerURL: "https://media.themoviedb.org/t/p/w500/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
     episodes: [
       {
         number: 1,
-        title: "Episodio 1",
+        title: "Piloto",
         embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_1/preview",
       },
       {
@@ -99,7 +92,7 @@ function renderCatalog(seriesList) {
 
   const rowTitle = document.createElement("h3");
   rowTitle.className = "row__title";
-  rowTitle.textContent = "Mi Lista";
+  rowTitle.textContent = "Series Destacadas";
   row.appendChild(rowTitle);
 
   const track = document.createElement("div");
@@ -152,7 +145,7 @@ function setHeroFromFirstSeries() {
   heroDescEl.textContent = first.shortDescription;
 
   document.getElementById("hero").style.backgroundImage = `
-    linear-gradient(135deg, rgba(20,20,20,0.4) 0%, rgba(20,20,20,0.85) 100%),
+    linear-gradient(135deg, rgba(20,20,20,0.6) 0%, rgba(20,20,20,0.95) 100%),
     url('${first.bannerURL || first.posterURL}')
   `;
   document.getElementById("hero").style.backgroundSize = "cover";
