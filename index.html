@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreamFlix — Mi Biblioteca</title>
+
+  <!-- Tipografía estilo Netflix (Bebas Neue para títulos + Roboto para texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============== HEADER ============== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <h1 class="logo">STREAM<span>FLIX</span></h1>
+      <nav class="nav">
+        <input
+          type="search"
+          id="searchInput"
+          class="search-input"
+          placeholder="Buscar series..."
+          autocomplete="off"
+        />
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============== HERO (banner superior) ============== -->
+  <section class="hero" id="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h2 class="hero__title" id="heroTitle">Bienvenido</h2>
+      <p class="hero__desc" id="heroDesc">
+        Selecciona una serie de la lista para comenzar a ver.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== CONTENEDOR PRINCIPAL DE CATÁLOGO ============== -->
+  <main class="catalog" id="catalog">
+    <!-- Las filas de series (row__title + row__track) se generan dinámicamente
+         desde script.js en base al arreglo SERIES_DATA -->
+  </main>
+
+  <!-- ============== MODAL: DETALLE DE SERIE + LISTA DE EPISODIOS ============== -->
+  <div class="modal-overlay" id="seriesModalOverlay">
+    <div class="modal series-modal">
+      <button class="modal__close" id="closeSeriesModal" aria-label="Cerrar">&times;</button>
+
+      <div class="series-modal__banner" id="seriesModalBanner">
+        <div class="series-modal__banner-overlay"></div>
+      </div>
+
+      <div class="series-modal__body">
+        <h2 class="series-modal__title" id="seriesModalTitle"></h2>
+        <p class="series-modal__desc" id="seriesModalDesc"></p>
+
+        <h3 class="episodes-heading">Episodios</h3>
+        <ul class="episodes-list" id="episodesList">
+          <!-- Episodios generados dinámicamente por script.js -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== MODAL: REPRODUCTOR DE VIDEO ============== -->
+  <div class="modal-overlay" id="playerModalOverlay">
+    <div class="modal player-modal">
+      <button class="modal__close" id="closePlayerModal" aria-label="Cerrar">&times;</button>
+      <h3 class="player-modal__title" id="playerModalTitle"></h3>
+
+      <!-- Contenedor responsivo 16:9 para el iframe de Google Drive -->
+      <div class="player-modal__frame-wrapper">
+        <iframe
+          id="videoFrame"
+          class="player-modal__iframe"
+          src=""
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>StreamFlix — Proyecto personal alojado en GitHub Pages. No afiliado a Netflix.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

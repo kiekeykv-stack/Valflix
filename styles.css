@@ -1,0 +1,520 @@
+/* =========================================================
+   STREAMFLIX — styles.css
+   Tema oscuro inspirado en Netflix
+   ========================================================= */
+
+:root {
+  --bg-color: #141414;
+  --bg-color-elevated: #1f1f1f;
+  --red-accent: #e50914;
+  --red-accent-hover: #f6121d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #808080;
+  --card-radius: 4px;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.35s ease;
+  --header-height: 68px;
+  --font-display: "Bebas Neue", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.95) 10%, rgba(20, 20, 20, 0));
+  transition: background-color var(--transition-medium);
+}
+
+.header.scrolled {
+  background-color: var(--bg-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header__inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4%;
+}
+
+.logo {
+  font-family: var(--font-display);
+  letter-spacing: 1px;
+  font-size: 1.8rem;
+  color: var(--red-accent);
+}
+
+.logo span {
+  color: var(--text-primary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid var(--text-muted);
+  color: var(--text-primary);
+  padding: 8px 14px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  width: 220px;
+  transition: width var(--transition-fast), border-color var(--transition-fast);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--text-primary);
+  width: 280px;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  height: 56vh;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(135deg, #3a0a0a 0%, #141414 70%);
+  padding: 0 4% 40px;
+  overflow: hidden;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg-color) 0%,
+    rgba(20, 20, 20, 0.2) 55%,
+    rgba(20, 20, 20, 0.6) 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero__desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  max-width: 520px;
+}
+
+/* =========================================================
+   CATÁLOGO / FILAS DE TARJETAS
+   ========================================================= */
+.catalog {
+  padding: 40px 0 60px;
+  position: relative;
+  z-index: 2;
+  margin-top: -80px;
+}
+
+.row {
+  margin-bottom: 40px;
+}
+
+.row__title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0 4% 12px;
+  color: var(--text-primary);
+}
+
+.row__track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 10px 4% 30px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) transparent;
+}
+
+.row__track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.row__track::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* =========================================================
+   TARJETA DE SERIE
+   ========================================================= */
+.card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 230px;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--bg-color-elevated);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), z-index 0s;
+  transform-origin: center center;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition-fast);
+}
+
+.card__info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.1) 100%);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.card__info h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.card__info span {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: scale(1.12);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  outline: none;
+}
+
+.card:hover .card__info,
+.card:focus-visible .card__info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   MODALES (fondo compartido)
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-medium);
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background-color: var(--bg-color-elevated);
+  border-radius: 8px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  transform: translateY(30px) scale(0.97);
+  transition: transform var(--transition-medium);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(20, 20, 20, 0.8);
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: background-color var(--transition-fast);
+}
+
+.modal__close:hover {
+  background-color: var(--red-accent);
+}
+
+/* --- Modal de Serie --- */
+.series-modal {
+  max-width: 760px;
+}
+
+.series-modal__banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  background-size: cover;
+  background-position: center;
+  background-color: #000;
+}
+
+.series-modal__banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-color-elevated) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+.series-modal__body {
+  padding: 8px 40px 40px;
+}
+
+.series-modal__title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.series-modal__desc {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 640px;
+}
+
+.episodes-heading {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.episodes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.episode-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.03);
+  transition: background-color var(--transition-fast);
+}
+
+.episode-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.episode-item__number {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  width: 34px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.episode-item__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.episode-item__info h5 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.episode-item__play {
+  flex-shrink: 0;
+  background-color: var(--text-primary);
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color var(--transition-fast);
+}
+
+.episode-item__play:hover {
+  background-color: var(--red-accent);
+  color: var(--text-primary);
+}
+
+/* --- Modal Reproductor --- */
+.player-modal {
+  max-width: 960px;
+  padding: 20px;
+}
+
+.player-modal__title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 4px 44px 16px 6px;
+}
+
+/* Contenedor responsivo 16:9 para que el iframe se adapte a cualquier pantalla */
+.player-modal__frame-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Relación de aspecto 16:9 */
+  background-color: #000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.player-modal__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer {
+  text-align: center;
+  padding: 30px 4% 50px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* =========================================================
+   ESTADO: SIN RESULTADOS DE BÚSQUEDA
+   ========================================================= */
+.no-results {
+  padding: 60px 4%;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 720px) {
+  .search-input,
+  .search-input:focus {
+    width: 150px;
+  }
+
+  .hero {
+    height: 46vh;
+    padding-bottom: 24px;
+  }
+
+  .card {
+    width: 150px;
+  }
+
+  .series-modal__body {
+    padding: 8px 20px 30px;
+  }
+
+  .episode-item {
+    flex-wrap: wrap;
+  }
+
+  .episode-item__play {
+    margin-left: 50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
