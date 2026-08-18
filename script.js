@@ -8,33 +8,7 @@
 
 /**
  * SERIES_DATA
- * -----------------------------------------------------------------
- * Cada objeto representa UNA serie. Estructura:
- *
- * {
- *   id: "identificador-unico",
- *   title: "Nombre de la serie",
- *   shortDescription: "Descripción corta que aparece en el modal",
- *   posterURL: "URL DE LA IMAGEN DEL POSTER",   <-- 👉 COLOCA AQUÍ LA IMAGEN (ideal 2:3, ej. 500x750px)
- *   bannerURL: "URL DE IMAGEN HORIZONTAL",      <-- 👉 (Opcional) imagen ancha para el encabezado del modal, ideal 16:7
- *   episodes: [
- *     {
- *       number: 1,
- *       title: "Título del episodio",
- *       embedURL: "URL DE EMBED DE GOOGLE DRIVE"  <-- 👉 COLOCA AQUÍ EL LINK DE GOOGLE DRIVE (formato /preview)
- *     },
- *     ...
- *   ]
- * }
- *
- * -----------------------------------------------------------------
- * CÓMO OBTENER EL "embedURL" DESDE UN LINK NORMAL DE GOOGLE DRIVE:
- * 1. Clic derecho sobre el video en Drive > "Obtener enlace" (acceso: "Cualquiera con el enlace").
- * 2. Copia el ID del archivo (texto largo entre "/d/" y "/view").
- * 3. Arma la URL final: https://drive.google.com/file/d/TU_ID_AQUI/preview
- * -----------------------------------------------------------------
  */
-
 const SERIES_DATA = [
   {
     id: "rukie",
@@ -76,6 +50,26 @@ const SERIES_DATA = [
         title: "Relaciones",
         embedURL: "https://drive.google.com/file/d/1lq8DJiuFNP8eA0VdfJyVZ_Nveks90BSw/preview",
       },
+      {
+        number: 7,
+        title: "Crimen verdadero",
+        embedURL: "https://drive.google.com/file/d/1-Y4y-VEVNQ2kuMdXmvpxaXONEAg0ouzR/preview",
+      },
+      {
+        number: 8,
+        title: "Corte limpio",
+        embedURL: "https://drive.google.com/file/d/1nxtmjjtEeBhJbYGjTQDT7-C1goT2PkNQ/preview",
+      },
+      {
+        number: 9,
+        title: "Ámbar",
+        embedURL: "https://drive.google.com/file/d/1itnJ-ArXRmsIq9H5zH09AbmWfgHk84S2/preview",
+      },
+      {
+        number: 10,
+        title: "Hombre de honor",
+        embedURL: "https://drive.google.com/file/d/1Dmxpgr_vUZqffsvTHpVTl0jyWJZLjMxU/preview",
+      },
     ],
   },
   // 👉 AGREGA MÁS SERIES AQUÍ copiando la estructura de arriba y
@@ -107,10 +101,14 @@ const episodesListEl = document.getElementById("episodesList");
 const closeSeriesModalBtn = document.getElementById("closeSeriesModal");
 
 const playerModalOverlay = document.getElementById("playerModalOverlay");
+const playerModal = playerModalOverlay.querySelector(".modal");
 const playerModalTitle = document.getElementById("playerModalTitle");
 const videoFrame = document.getElementById("videoFrame");
 const playerSpinner = document.getElementById("playerSpinner");
 const closePlayerModalBtn = document.getElementById("closePlayerModal");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+const fullscreenTextBtn = document.getElementById("fullscreenTextBtn");
+const openInDriveLink = document.getElementById("openInDriveLink");
 
 // Recuerda qué elemento tenía el foco antes de abrir un modal (accesibilidad)
 let lastFocusedEl = null;
@@ -264,8 +262,34 @@ function openPlayerModal(serie, episode) {
   videoFrame.style.opacity = "0";
   videoFrame.src = episode.embedURL; // 👈 Aquí se inyecta la URL /preview de Drive en el <iframe>
 
+  // El enlace de respaldo abre el video directamente en Drive (fuera del iframe),
+  // útil si los controles se ven amontonados dentro del reproductor embebido.
+  openInDriveLink.href = episode.embedURL.replace("/preview", "/view");
+
   openModal(playerModalOverlay);
 }
+
+/**
+ * Pide pantalla completa para el reproductor (el modal completo, para
+ * conservar la barra de título) usando la API estándar y sus variantes
+ * con prefijo para compatibilidad con Safari/iOS.
+ */
+function toggleFullscreen() {
+  const el = playerModal;
+  const isFullscreen =
+    document.fullscreenElement || document.webkitFullscreenElement;
+
+  if (!isFullscreen) {
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+  }
+}
+
+fullscreenBtn.addEventListener("click", toggleFullscreen);
+fullscreenTextBtn.addEventListener("click", toggleFullscreen);
 
 // Cuando el iframe termina de cargar, se oculta el spinner
 videoFrame.addEventListener("load", () => {
@@ -337,8 +361,6 @@ function enableSwipeToClose(overlayEl, onClose) {
   modalEl.addEventListener(
     "touchstart",
     (e) => {
-      // Solo activa el gesto si el modal está en su tope de scroll (evita
-      // interferir con el scroll normal del contenido del modal)
       if (modalEl.scrollTop > 0) return;
       startY = e.touches[0].clientY;
       dragging = true;
@@ -365,7 +387,6 @@ function enableSwipeToClose(overlayEl, onClose) {
     modalEl.style.transition = "";
     modalEl.style.transform = "";
 
-    // Si el usuario deslizó más de 100px hacia abajo, cierra el modal
     if (currentY > 100) {
       onClose();
     }
@@ -411,5 +432,5 @@ window.addEventListener(
       headerEl.classList.remove("scrolled");
     }
   },
-  { passive: true } // mejora el rendimiento de scroll en móvil
+  { passive: true }
 );
