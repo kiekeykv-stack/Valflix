@@ -8,131 +8,54 @@
 
 /**
  * SERIES_DATA
- * -----------------------------------------------------------------
- * Cada objeto representa UNA serie. Estructura:
- *
- * {
- *   id: "identificador-unico",         -> string único, sin espacios
- *   title: "Nombre de la serie",
- *   shortDescription: "Descripción corta que aparece en el modal",
- *   posterURL: "URL DE LA IMAGEN DEL POSTER",   <-- 👉 COLOCA AQUÍ LA IMAGEN (poster vertical, ideal 2:3, ej. 500x750px)
- *   bannerURL: "URL DE IMAGEN HORIZONTAL",      <-- 👉 (Opcional) imagen ancha para el encabezado del modal, ideal 16:7
- *   episodes: [
- *     {
- *       number: 1,
- *       title: "Título del episodio",
- *       embedURL: "URL DE EMBED DE GOOGLE DRIVE"  <-- 👉 COLOCA AQUÍ EL LINK DE GOOGLE DRIVE (ver instrucciones abajo)
- *     },
- *     ...
- *   ]
- * }
- *
- * -----------------------------------------------------------------
- * CÓMO OBTENER EL "embedURL" DESDE UN LINK NORMAL DE GOOGLE DRIVE:
- *
- * 1. En Google Drive, clic derecho sobre el video > "Obtener enlace"
- *    y asegúrate de que el acceso sea "Cualquier usuario con el enlace".
- *
- * 2. Copiarás algo como:
- *    https://drive.google.com/file/d/1AbCdEfGhIjKlMnOpQrStUvWxYz/view?usp=sharing
- *
- * 3. Toma el ID del archivo (el texto largo entre "/d/" y "/view"):
- *    1AbCdEfGhIjKlMnOpQrStUvWxYz
- *
- * 4. Arma la URL de embed reemplazando "view?usp=sharing" por "preview":
- *    https://drive.google.com/file/d/1AbCdEfGhIjKlMnOpQrStUvWxYz/preview
- *
- * 5. Esa última URL (".../preview") es la que debes pegar en "embedURL".
- *    Esta es la que realmente funciona dentro de un <iframe>.
- * -----------------------------------------------------------------
  */
-
 const SERIES_DATA = [
   {
-    id: "serie-ejemplo-1",
-    title: "Ecos del Mañana",
+    id: "mi-serie-principal",
+    title: "Mi Serie Principal",
     shortDescription:
-      "En un futuro cercano, un grupo de científicos descubre una señal que podría cambiar el destino de la humanidad. Drama de ciencia ficción con giros inesperados en cada capítulo.",
+      "Serie cargada desde Google Drive con todos sus episodios disponibles para reproducir directamente en la plataforma.",
     // 👉 POSTER: imagen vertical (recomendado 500x750px aprox.)
-    posterURL: "https://placehold.co/500x750/1f1f1f/e50914?text=Ecos+del+Ma%C3%B1ana",
+    posterURL: "https://placehold.co/500x750/1f1f1f/e50914?text=Mi+Serie",
     // 👉 BANNER: imagen horizontal para el modal (recomendado 1280x560px aprox.)
-    bannerURL: "https://placehold.co/1280x560/1f1f1f/e50914?text=Ecos+del+Ma%C3%B1ana",
+    bannerURL: "https://placehold.co/1280x560/1f1f1f/e50914?text=Mi+Serie",
     episodes: [
       {
         number: 1,
-        title: "La Señal",
-        // 👉 VIDEO: pega aquí tu URL de Drive ya convertida a formato /preview
+        title: "Episodio 1",
         embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_1/preview",
       },
       {
         number: 2,
-        title: "Contacto",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_2/preview",
+        title: "En pos de la justicia",
+        embedURL: "https://drive.google.com/file/d/1c5uOrpgRvopmq4vXxcihTWT6K_BFVFnZ/preview",
       },
       {
         number: 3,
-        title: "El Precio del Silencio",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_3/preview",
-      },
-    ],
-  },
-  {
-    id: "serie-ejemplo-2",
-    title: "Bajo la Misma Luna",
-    shortDescription:
-      "Una historia de amistad y superación ambientada en un pequeño pueblo costero, donde tres hermanos deben reconstruir su relación tras la pérdida de su padre.",
-    posterURL: "https://placehold.co/500x750/1f1f1f/e50914?text=Bajo+la+Misma+Luna",
-    bannerURL: "https://placehold.co/1280x560/1f1f1f/e50914?text=Bajo+la+Misma+Luna",
-    episodes: [
-      {
-        number: 1,
-        title: "El Regreso",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_4/preview",
-      },
-      {
-        number: 2,
-        title: "Viejas Heridas",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_5/preview",
-      },
-    ],
-  },
-  {
-    id: "serie-ejemplo-3",
-    title: "Código Nocturno",
-    shortDescription:
-      "Un thriller de espionaje sobre una hacker que descubre una conspiración internacional mientras intenta proteger a su familia de una organización que no perdona errores.",
-    posterURL: "https://placehold.co/500x750/1f1f1f/e50914?text=C%C3%B3digo+Nocturno",
-    bannerURL: "https://placehold.co/1280x560/1f1f1f/e50914?text=C%C3%B3digo+Nocturno",
-    episodes: [
-      {
-        number: 1,
-        title: "Acceso Denegado",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_6/preview",
-      },
-      {
-        number: 2,
-        title: "Puerta Trasera",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_7/preview",
-      },
-      {
-        number: 3,
-        title: "Firewall",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_8/preview",
+        title: "La fiera",
+        embedURL: "https://drive.google.com/file/d/1YY_qG5LkdhbU5lZR9DJs8Jd0MW0EVCYp/preview",
       },
       {
         number: 4,
-        title: "Cero Rastro",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_9/preview",
+        title: "Sabotaje",
+        embedURL: "https://drive.google.com/file/d/1icOu0q5a7avNu2Z5IsKxi0fslBWlD2Bb/preview",
+      },
+      {
+        number: 5,
+        title: "Aislamiento",
+        embedURL: "https://drive.google.com/file/d/1LDYQWyhbacL8Oos1r2wxfKatQ33qISCp/preview",
+      },
+      {
+        number: 6,
+        title: "Relaciones",
+        embedURL: "https://drive.google.com/file/d/1lq8DJiuFNP8eA0VdfJyVZ_Nveks90BSw/preview",
       },
     ],
   },
-  // 👉 AGREGA MÁS SERIES AQUÍ copiando la estructura de arriba y
-  //    pegando un objeto adicional dentro de este arreglo.
 ];
 
 /* =========================================================
    A partir de aquí: lógica de la aplicación.
-   No es necesario editar nada más abajo para agregar contenido.
    ========================================================= */
 
 // ---------- Referencias al DOM ----------
@@ -162,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * Pinta la fila de tarjetas en el catálogo.
- * Recibe un arreglo de series (permite reutilizar la función al filtrar por búsqueda).
  */
 function renderCatalog(seriesList) {
   catalogEl.innerHTML = "";
@@ -197,7 +119,7 @@ function renderCatalog(seriesList) {
 function createCardElement(serie) {
   const card = document.createElement("article");
   card.className = "card";
-  card.tabIndex = 0; // permite foco con teclado (accesibilidad)
+  card.tabIndex = 0;
   card.setAttribute("role", "button");
   card.setAttribute("aria-label", `Ver detalles de ${serie.title}`);
 
@@ -238,7 +160,7 @@ function setHeroFromFirstSeries() {
 }
 
 // =========================================================
-// MODAL DE SERIE (descripción + lista de episodios)
+// MODAL DE SERIE
 // =========================================================
 
 function openSeriesModal(serie) {
@@ -281,12 +203,12 @@ seriesModalOverlay.addEventListener("click", (e) => {
 });
 
 // =========================================================
-// MODAL REPRODUCTOR (iframe con el video de Google Drive)
+// MODAL REPRODUCTOR
 // =========================================================
 
 function openPlayerModal(serie, episode) {
   playerModalTitle.textContent = `${serie.title} — Episodio ${episode.number}: ${episode.title}`;
-  videoFrame.src = episode.embedURL; // 👈 Aquí se inyecta la URL /preview de Drive en el <iframe>
+  videoFrame.src = episode.embedURL;
 
   playerModalOverlay.classList.add("active");
   document.body.style.overflow = "hidden";
@@ -294,7 +216,7 @@ function openPlayerModal(serie, episode) {
 
 function closePlayerModal() {
   playerModalOverlay.classList.remove("active");
-  videoFrame.src = ""; // detiene la reproducción al cerrar
+  videoFrame.src = "";
   document.body.style.overflow = seriesModalOverlay.classList.contains("active") ? "hidden" : "";
 }
 
@@ -324,7 +246,7 @@ searchInput.addEventListener("input", (e) => {
 });
 
 // =========================================================
-// EFECTO DE HEADER AL HACER SCROLL (fondo sólido)
+// EFECTO DE HEADER AL HACER SCROLL
 // =========================================================
 
 window.addEventListener("scroll", () => {
