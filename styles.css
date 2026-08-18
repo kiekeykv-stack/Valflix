@@ -518,20 +518,68 @@ button {
 /* --- Modal Reproductor --- */
 .player-modal {
   max-width: 960px;
-  padding: 20px;
+  padding: 16px 16px 20px;
+}
+
+.player-modal__topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 4px 2px 12px;
 }
 
 .player-modal__title {
   font-size: 1rem;
   font-weight: 500;
-  margin: 4px 44px 16px 6px;
+  line-height: 1.35;
+  padding-top: 6px;
 }
 
-/* Contenedor responsivo 16:9 para que el iframe se adapte a cualquier pantalla */
+.player-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* En la barra de acciones, el botón cerrar deja de estar flotando encima del video */
+.player-modal__close.modal__close {
+  position: static;
+}
+
+.player-modal__fullscreen {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.player-modal__fullscreen svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.player-modal__fullscreen:hover,
+.player-modal__fullscreen:active {
+  background-color: var(--red-accent);
+}
+
+/* Contenedor responsivo 16:9 para que el iframe se adapte a cualquier pantalla.
+   Se usa aspect-ratio con un alto mínimo, para que en pantallas angostas el
+   video no quede tan bajito que los controles de Drive se amontonen. */
 .player-modal__frame-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* Relación de aspecto 16:9 */
+  aspect-ratio: 16 / 9;
+  min-height: 200px;
   background-color: #000;
   border-radius: 4px;
   overflow: hidden;
@@ -544,6 +592,48 @@ button {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+.player-modal__fallback {
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.player-modal__fallback-link {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+.player-modal__fallback a {
+  color: var(--text-secondary);
+}
+
+/* Cuando el modal entra en pantalla completa (botón de expandir), el video
+   ocupa todo el espacio disponible en vez de quedar limitado a 16:9 */
+.player-modal:fullscreen,
+.player-modal:-webkit-full-screen {
+  max-width: none;
+  max-height: none;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  background-color: #000;
+}
+
+.player-modal:fullscreen .player-modal__frame-wrapper,
+.player-modal:-webkit-full-screen .player-modal__frame-wrapper {
+  flex: 1;
+  aspect-ratio: auto;
+  min-height: 0;
+  border-radius: 0;
 }
 
 /* Spinner de carga mientras el iframe de Drive establece conexión */
@@ -634,13 +724,47 @@ button {
   }
 
   .player-modal {
-    padding: 14px;
+    /* Sin padding lateral: el video llega hasta el borde de la pantalla,
+       que es el espacio extra que necesitan los controles de Drive */
+    padding: 12px 0 16px;
     border-radius: 16px 16px 0 0;
   }
 
+  .player-modal__topbar {
+    margin: 0 14px 10px;
+  }
+
   .player-modal__title {
-    margin-right: 40px;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
+    padding-top: 4px;
+  }
+
+  .player-modal__frame-wrapper {
+    border-radius: 0;
+    min-height: 210px;
+  }
+
+  .player-modal__fallback {
+    margin: 12px 14px 0;
+  }
+}
+
+/* En horizontal (celular rotado), el video aprovecha el alto disponible
+   en vez de quedar limitado por el 16:9 sobre un ancho ya generoso */
+@media (max-width: 900px) and (orientation: landscape) {
+  .modal-overlay {
+    align-items: center;
+    padding: 10px;
+  }
+
+  .player-modal {
+    max-height: 96vh;
+  }
+
+  .player-modal__frame-wrapper {
+    aspect-ratio: auto;
+    height: min(70vh, 60vw);
+    min-height: 0;
   }
 }
 

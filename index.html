@@ -83,10 +83,21 @@
   <div class="modal-overlay" id="playerModalOverlay">
     <div class="modal player-modal" role="dialog" aria-modal="true" aria-labelledby="playerModalTitle">
       <div class="modal__drag-handle" aria-hidden="true"></div>
-      <button class="modal__close" id="closePlayerModal" aria-label="Cerrar">&times;</button>
-      <h3 class="player-modal__title" id="playerModalTitle"></h3>
 
-      <!-- Contenedor responsivo 16:9 para el iframe de Google Drive -->
+      <!-- Barra superior: título + acciones (pantalla completa / cerrar) -->
+      <div class="player-modal__topbar">
+        <h3 class="player-modal__title" id="playerModalTitle"></h3>
+        <div class="player-modal__actions">
+          <button class="player-modal__fullscreen" id="fullscreenBtn" type="button" aria-label="Pantalla completa">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+          </button>
+          <button class="modal__close player-modal__close" id="closePlayerModal" aria-label="Cerrar">&times;</button>
+        </div>
+      </div>
+
+      <!-- Contenedor responsivo 16:9 para el iframe de Google Drive.
+           Se muestra a ancho completo (sin márgenes) para que los controles
+           propios de Drive tengan todo el espacio horizontal posible. -->
       <div class="player-modal__frame-wrapper">
         <div class="player-modal__spinner" id="playerSpinner" aria-hidden="true"></div>
         <iframe
@@ -98,6 +109,13 @@
           frameborder="0"
         ></iframe>
       </div>
+
+      <!-- Alternativa por si los controles de Drive se ven amontonados en el celular -->
+      <p class="player-modal__fallback">
+        ¿Los controles se ven encimados? Prueba
+        <button class="player-modal__fallback-link" id="fullscreenTextBtn" type="button">pantalla completa</button>
+        o <a id="openInDriveLink" href="#" target="_blank" rel="noopener noreferrer">ábrelo directo en Drive</a>.
+      </p>
     </div>
   </div>
 
