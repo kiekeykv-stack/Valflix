@@ -33,12 +33,12 @@ const SERIES_DATA = [
        {
         number: 13,
         title: "Capítulo 13: Servicio triple",
-        embedURL: "https://drive.google.com/file/d/1XrrGlcbHAl4c5Cq-6tqw8hwAg76pEk9M/view?usp=drive_link/preview",
+        embedURL: "https://drive.google.com/file/d/1XrrGlcbHAl4c5Cq-6tqw8hwAg76pEk9M/preview",
       },
        {
         number: 14,
         title: "Capítulo 14: Umbral",
-        embedURL: "https://drive.google.com/file/d/15syOYhIk_Ob0EgPl9n93zNbyrAdxhl4o/view?usp=drive_link/preview",
+        embedURL: "https://drive.google.com/file/d/15syOYhIk_Ob0EgPl9n93zNbyrAdxhl4o/preview",
       },
     ],
   },
