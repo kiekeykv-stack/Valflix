@@ -21,54 +21,24 @@ const SERIES_DATA = [
     bannerURL: "https://media.themoviedb.org/t/p/w500/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
     episodes: [
       {
-        number: 1,
-        title: "Piloto",
-        embedURL: "https://drive.google.com/file/d/EJEMPLO_ID_EPISODIO_1/preview",
+        number: 11,
+        title: "Capítulo 11: Sangre nueva",
+        embedURL: "https://drive.google.com/file/d/10tjMA4cEnTmbHG0OE13b5NZoARkGUeHS/preview",
       },
       {
-        number: 2,
-        title: "En pos de la justicia",
-        embedURL: "https://drive.google.com/file/d/1c5uOrpgRvopmq4vXxcihTWT6K_BFVFnZ/preview",
+        number: 12,
+        title: "Capítulo 12: Corazón Valiente",
+        embedURL: "https://drive.google.com/file/d/1LzFZADj0kjMDwThhr-DHUy7gYCy4AAHx/preview",
       },
-      {
-        number: 3,
-        title: "La fiera",
-        embedURL: "https://drive.google.com/file/d/1YY_qG5LkdhbU5lZR9DJs8Jd0MW0EVCYp/preview",
+       {
+        number: 13,
+        title: "Capítulo 13: Servicio triple",
+        embedURL: "https://drive.google.com/file/d/1XrrGlcbHAl4c5Cq-6tqw8hwAg76pEk9M/view?usp=drive_link/preview",
       },
-      {
-        number: 4,
-        title: "Sabotaje",
-        embedURL: "https://drive.google.com/file/d/1icOu0q5a7avNu2Z5IsKxi0fslBWlD2Bb/preview",
-      },
-      {
-        number: 5,
-        title: "Aislamiento",
-        embedURL: "https://drive.google.com/file/d/1LDYQWyhbacL8Oos1r2wxfKatQ33qISCp/preview",
-      },
-      {
-        number: 6,
-        title: "Relaciones",
-        embedURL: "https://drive.google.com/file/d/1lq8DJiuFNP8eA0VdfJyVZ_Nveks90BSw/preview",
-      },
-      {
-        number: 7,
-        title: "Crimen verdadero",
-        embedURL: "https://drive.google.com/file/d/1-Y4y-VEVNQ2kuMdXmvpxaXONEAg0ouzR/preview",
-      },
-      {
-        number: 8,
-        title: "Corte limpio",
-        embedURL: "https://drive.google.com/file/d/1nxtmjjtEeBhJbYGjTQDT7-C1goT2PkNQ/preview",
-      },
-      {
-        number: 9,
-        title: "Ámbar",
-        embedURL: "https://drive.google.com/file/d/1itnJ-ArXRmsIq9H5zH09AbmWfgHk84S2/preview",
-      },
-      {
-        number: 10,
-        title: "Hombre de honor",
-        embedURL: "https://drive.google.com/file/d/1Dmxpgr_vUZqffsvTHpVTl0jyWJZLjMxU/preview",
+       {
+        number: 14,
+        title: "Capítulo 14: Umbral",
+        embedURL: "https://drive.google.com/file/d/15syOYhIk_Ob0EgPl9n93zNbyrAdxhl4o/view?usp=drive_link/preview",
       },
     ],
   },
