@@ -42,6 +42,53 @@ const SERIES_DATA = [
       },
     ],
   },
+  {
+    id: "rukie-temporada-4",
+    title: "Rukie - Temporada 4",
+    shortDescription:
+      "Una nueva temporada llena de casos difíciles, decisiones de vida o muerte y giros inesperados para los oficiales del LAPD.",
+    // 👉 POSTER OFICIAL (cámbialo si tienes uno específico para esta temporada)
+    posterURL: "https://media.themoviedb.org/t/p/w500/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
+    // 👉 BANNER
+    bannerURL: "https://media.themoviedb.org/t/p/w500/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
+    episodes: [
+      {
+        number: 1,
+        title: "Capítulo 1: Vida y muerte",
+        embedURL: "https://drive.google.com/file/d/10Zlw0lLc5VJjwd7MdY0ugNfHJPjEtHU2/preview",
+      },
+      {
+        number: 2,
+        title: "Capítulo 2: Cinco minutos",
+        embedURL: "https://drive.google.com/file/d/10sucYfpQ1_SjO-6jaE66FuSH-hlgfDdj/preview",
+      },
+      {
+        number: 3,
+        title: "Capítulo 3: En la línea de fuego",
+        embedURL: "https://drive.google.com/file/d/1FhCIKj6ZdpQH6RZxYBvt1RTUqSTAIO_r/preview",
+      },
+      {
+        number: 4,
+        title: "Capítulo 4: Al rojo vivo",
+        embedURL: "https://drive.google.com/file/d/19WmV3KISK4uZ5qNIMvv69oJFpR7x-jpz/preview",
+      },
+      {
+        number: 5,
+        title: "Capítulo 5: Droga de diseño",
+        embedURL: "https://drive.google.com/file/d/1-MNidRHgPJlzaOtggCCZTtKLnLEmWl52/preview",
+      },
+      {
+        number: 6,
+        title: "Capítulo 6: Justicia poética",
+        embedURL: "https://drive.google.com/file/d/1o6U4KnD-YwZhSjBIVCZSJy-3P079fcF-/preview",
+      },
+      {
+        number: 7,
+        title: "Capítulo 7: Combatir Fuego",
+        embedURL: "https://drive.google.com/file/d/186W0Gu2ZzDHpuVHOz0SaVio3ybvSmXFJ/preview",
+      },
+    ],
+  },
   // 👉 AGREGA MÁS SERIES AQUÍ copiando la estructura de arriba y
   //    pegando un objeto adicional dentro de este arreglo.
 ];
