@@ -33,7 +33,7 @@ const SERIES_DATA = [
        {
         number: 13,
         title: "Capítulo 13: Servicio triple",
-        embedURL: "https://drive.google.com/file/d/1XrrGlcbHAl4c5Cq-6tqw8hwAg76pEk9M/preview",
+        embedURL: "https://drive.google.com/file/d/10Zlw0lLc5VJjwd7MdY0ugNfHJPjEtHU2/preview",
       },
        {
         number: 14,
@@ -55,7 +55,7 @@ const SERIES_DATA = [
       {
         number: 1,
         title: "Capítulo 1: Vida y muerte",
-        embedURL: "https://drive.google.com/file/d/10Zlw0lLc5VJjwd7MdY0ugNfHJPjEtHU2/preview",
+        embedURL: "https://drive.google.com/file/d/1XrrGlcbHAl4c5Cq-6tqw8hwAg76pEk9M/preview",
       },
       {
         number: 2,
