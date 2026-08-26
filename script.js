@@ -10,7 +10,6 @@
  * SERIES_DATA
  */
 const SERIES_DATA = [
-  
   {
     id: "rukie-temporada-4",
     title: "Rukie - Temporada 4",
@@ -67,27 +66,27 @@ const SERIES_DATA = [
       {
         number: 4,
         title: "Capítulo 4",
-        embedURL: "https://drive.google.com/file/d/19WmV3KISK4uZ5qNIMvv69oJFpR7x-jpz/preview",
+        embedURL: "https://drive.google.com/file/d/1UNDKc72RgTNoSUVBSOYhhspPWoag4NIH/preview",
       },
       {
         number: 5,
         title: "Capítulo 5",
-        embedURL: "https://drive.google.com/file/d/1-MNidRHgPJlzaOtggCCZTtKLnLEmWl52/preview",
+        embedURL: "https://drive.google.com/file/d/1qEUnCgtR5zHGPu-feXa-c-s_o3i_aQ3U/preview",
       },
       {
         number: 6,
         title: "Capítulo 6",
-        embedURL: "https://drive.google.com/file/d/1o6U4KnD-YwZhSjBIVCZSJy-3P079fcF-/preview",
+        embedURL: "https://drive.google.com/file/d/1aWuhXlrt_NQGwCMjxi2fEsJR9L1e5iuM/preview",
       },
       {
         number: 7,
         title: "Capítulo 7",
-        embedURL: "https://drive.google.com/file/d/186W0Gu2ZzDHpuVHOz0SaVio3ybvSmXFJ/preview",
+        embedURL: "https://drive.google.com/file/d/1EXD87MuFw39PuBEJMtYd-aauJS5MCb-M/preview",
       },
       {
         number: 8,
         title: "Capítulo 8",
-        embedURL: "https://drive.google.com/file/d/TU_ID_DE_GOOGLE_DRIVE/preview",
+        embedURL: "https://drive.google.com/file/d/1EmbH0rbX2WVB2tfZsPnmJ6oSd8MJYqjt/preview",
       },
     ],
   },
