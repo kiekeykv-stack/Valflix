@@ -19,26 +19,6 @@ const SERIES_DATA = [
     bannerURL: "https://media.themoviedb.org/t/p/w500/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
     episodes: [
       {
-        number: 1,
-        title: "Capítulo 1: Vida y muerte",
-        embedURL: "https://drive.google.com/file/d/1XrrGlcbHAl4c5Cq-6tqw8hwAg76pEk9M/preview",
-      },
-      {
-        number: 2,
-        title: "Capítulo 2: Cinco minutos",
-        embedURL: "https://drive.google.com/file/d/10sucYfpQ1_SjO-6jaE66FuSH-hlgfDdj/preview",
-      },
-      {
-        number: 3,
-        title: "Capítulo 3: En la línea de fuego",
-        embedURL: "https://drive.google.com/file/d/1FhCIKj6ZdpQH6RZxYBvt1RTUqSTAIO_r/preview",
-      },
-      {
-        number: 4,
-        title: "Capítulo 4: Al rojo vivo",
-        embedURL: "https://drive.google.com/file/d/19WmV3KISK4uZ5qNIMvv69oJFpR7x-jpz/preview",
-      },
-      {
         number: 5,
         title: "Capítulo 5: Droga de diseño",
         embedURL: "https://drive.google.com/file/d/1-MNidRHgPJlzaOtggCCZTtKLnLEmWl52/preview",
@@ -52,6 +32,26 @@ const SERIES_DATA = [
         number: 7,
         title: "Capítulo 7: Combatir Fuego",
         embedURL: "https://drive.google.com/file/d/186W0Gu2ZzDHpuVHOz0SaVio3ybvSmXFJ/preview",
+      },
+      {
+        number: 8,
+        title: "Capítulo 8: Pega y corre",
+        embedURL: "https://drive.google.com/file/d/1Y_isa2fWoLgZ-JakEQvcrd5iokSJm2X6/preview",
+      },
+      {
+        number: 9,
+        title: "Capítulo 9: Desglose",
+        embedURL: "https://drive.google.com/file/d/1Nz4KTnzM8L-X3FSijQSXzP8f1T_7nWDS/preview",
+      },
+      {
+        number: 10,
+        title: "Capítulo 10: Latido del corazón",
+        embedURL: "https://drive.google.com/file/d/13T97zaT06jXZSLPj-FFpBBDSP4DWJLjw/preview",
+      },
+      {
+        number: 11,
+        title: "Capítulo 11: Fin del juego",
+        embedURL: "https://drive.google.com/file/d/1A2aX-pp849Gd07-yGnl1nmBW4CD3mdA2/preview",
       },
     ],
   },
