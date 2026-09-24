@@ -45,7 +45,7 @@ const SERIES_DATA = [
       {
         number: 17,
         title: "Capítulo 17",
-        embedURL: "https://drive.google.com/file/d/PON_TU_ID_AQUI/preview",
+        embedURL: "https://drive.google.com/file/d/17ZnZh1Zb12hW1Ll2crc751FxSgoDzuxM/preview",
       },
       {
         number: 18,
