@@ -22,6 +22,36 @@ const SERIES_DATA = [
         title: "Capítulo 12",
         embedURL: "https://drive.google.com/file/d/11tELKqwBYaTDIBpwfBGaVqFHysFXxVqQ/preview",
       },
+      {
+        number: 13,
+        title: "Capítulo 13",
+        embedURL: "https://drive.google.com/file/d/1lFzp-VrSSEABTATyoYbF_sDDmXhtlmJm/preview",
+      },
+      {
+        number: 14,
+        title: "Capítulo 14",
+        embedURL: "https://drive.google.com/file/d/1NzQU9DkdnLeep8xtXCG1DSLTyJTDPLF4/preview",
+      },
+      {
+        number: 15,
+        title: "Capítulo 15",
+        embedURL: "https://drive.google.com/file/d/11eTXIjE5jk7LybiFegL2x_5TPT2aBcbG/preview",
+      },
+      {
+        number: 16,
+        title: "Capítulo 16",
+        embedURL: "https://drive.google.com/file/d/18EuMl7cpk-PjprL2OBDE2ON6Fz8miBVz/preview",
+      },
+      {
+        number: 17,
+        title: "Capítulo 17",
+        embedURL: "https://drive.google.com/file/d/PON_TU_ID_AQUI/preview",
+      },
+      {
+        number: 18,
+        title: "Capítulo 18",
+        embedURL: "https://drive.google.com/file/d/16OlvL2QkosvQEIO3-tjMuQ_E9Z-oSYuH/preview",
+      },
     ],
   },
 ];
