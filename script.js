@@ -1,101 +1,25 @@
-/* =========================================================
-   VALFLIX — script.js
-   =========================================================
-   ¿CÓMO AGREGAR TUS PROPIAS SERIES?
-   Edita únicamente el arreglo SERIES_DATA de abajo.
-   No es necesario tocar el resto del archivo.
-   ========================================================= */
-
-/**
- * SERIES_DATA
- */
 const SERIES_DATA = [
   {
-    id: "rukie-temporada-4",
-    title: "Rukie - Temporada 4",
+    id: "the-rookie-temporada-8",
+    title: "The Rookie - Temporada 8",
     shortDescription:
       "Una nueva temporada llena de casos difíciles, decisiones de vida o muerte y giros inesperados para los oficiales del LAPD.",
     posterURL: "https://media.themoviedb.org/t/p/w500/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
     bannerURL: "https://media.themoviedb.org/t/p/w500/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg",
     episodes: [
       {
-        number: 5,
-        title: "Capítulo 5: Droga de diseño",
-        embedURL: "https://drive.google.com/file/d/1-MNidRHgPJlzaOtggCCZTtKLnLEmWl52/preview",
-      },
-      {
-        number: 6,
-        title: "Capítulo 6: Justicia poética",
-        embedURL: "https://drive.google.com/file/d/1o6U4KnD-YwZhSjBIVCZSJy-3P079fcF-/preview",
-      },
-      {
-        number: 7,
-        title: "Capítulo 7: Combatir Fuego",
-        embedURL: "https://drive.google.com/file/d/186W0Gu2ZzDHpuVHOz0SaVio3ybvSmXFJ/preview",
-      },
-      {
-        number: 8,
-        title: "Capítulo 8: Pega y corre",
-        embedURL: "https://drive.google.com/file/d/1Y_isa2fWoLgZ-JakEQvcrd5iokSJm2X6/preview",
-      },
-      {
-        number: 9,
-        title: "Capítulo 9: Desglose",
-        embedURL: "https://drive.google.com/file/d/1Nz4KTnzM8L-X3FSijQSXzP8f1T_7nWDS/preview",
-      },
-      {
         number: 10,
-        title: "Capítulo 10: Latido del corazón",
-        embedURL: "https://drive.google.com/file/d/13T97zaT06jXZSLPj-FFpBBDSP4DWJLjw/preview",
+        title: "Capítulo 10",
+        embedURL: "https://drive.google.com/file/d/1fuwzSKdGBXHkBT7nBGvKN3N8OT9Gvv0d/preview",
       },
       {
-        number: 11,
-        title: "Capítulo 11: Fin del juego",
-        embedURL: "https://drive.google.com/file/d/1A2aX-pp849Gd07-yGnl1nmBW4CD3mdA2/preview",
-      },
-    ],
-  },
-  {
-    id: "silo",
-    title: "Silo",
-    shortDescription:
-      "En un futuro ruinoso y tóxico, miles de personas viven en un gigante silo subterráneo sometidas a estrictas regulaciones.",
-    posterURL: "https://pixieposters.co.uk/cdn/shop/files/silo-movie-poster.jpg?v=1729977599",
-    bannerURL: "https://pixieposters.co.uk/cdn/shop/files/silo-movie-poster.jpg?v=1729977599",
-    episodes: [
-      {
-        number: 4,
-        title: "Capítulo 4",
-        embedURL: "https://drive.google.com/file/d/1UNDKc72RgTNoSUVBSOYhhspPWoag4NIH/preview",
-      },
-      {
-        number: 5,
-        title: "Capítulo 5",
-        embedURL: "https://drive.google.com/file/d/1qEUnCgtR5zHGPu-feXa-c-s_o3i_aQ3U/preview",
-      },
-      {
-        number: 6,
-        title: "Capítulo 6",
-        embedURL: "https://drive.google.com/file/d/1aWuhXlrt_NQGwCMjxi2fEsJR9L1e5iuM/preview",
-      },
-      {
-        number: 7,
-        title: "Capítulo 7",
-        embedURL: "https://drive.google.com/file/d/1EXD87MuFw39PuBEJMtYd-aauJS5MCb-M/preview",
-      },
-      {
-        number: 8,
-        title: "Capítulo 8",
-        embedURL: "https://drive.google.com/file/d/1EmbH0rbX2WVB2tfZsPnmJ6oSd8MJYqjt/preview",
+        number: 12,
+        title: "Capítulo 12",
+        embedURL: "https://drive.google.com/file/d/1NMvPznYCXyE_30u4CQBo3FRtdF9za9Bi/preview",
       },
     ],
   },
 ];
-
-/* =========================================================
-   A partir de aquí: lógica de la aplicación.
-   No es necesario editar nada más abajo para agregar contenido.
-   ========================================================= */
 
 const FALLBACK_POSTER =
   "https://placehold.co/500x750/1f1f1f/808080?text=Sin+Imagen";
