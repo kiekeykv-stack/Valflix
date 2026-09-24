@@ -20,7 +20,7 @@ const SERIES_DATA = [
       {
         number: 12,
         title: "Capítulo 12",
-        embedURL: "https://drive.google.com/file/d/1NMvPznYCXyE_30u4CQBo3FRtdF9za9Bi/preview",
+        embedURL: "https://drive.google.com/file/d/11tELKqwBYaTDIBpwfBGaVqFHysFXxVqQ/preview",
       },
     ],
   },
