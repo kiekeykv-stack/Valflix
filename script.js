@@ -13,6 +13,11 @@ const SERIES_DATA = [
         embedURL: "https://drive.google.com/file/d/1fuwzSKdGBXHkBT7nBGvKN3N8OT9Gvv0d/preview",
       },
       {
+        number: 11,
+        title: "Capítulo 11",
+        embedURL: "https://drive.google.com/file/d/1ZThMOpyU-WGb5Dazaa8GeVZgjZum52cg/preview",
+      },
+      {
         number: 12,
         title: "Capítulo 12",
         embedURL: "https://drive.google.com/file/d/1NMvPznYCXyE_30u4CQBo3FRtdF9za9Bi/preview",
